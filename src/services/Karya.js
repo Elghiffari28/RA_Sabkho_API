@@ -1,4 +1,4 @@
-import { KARYA_DATA, ADD_KARYA } from "../models/KaryaData.js";
+import { KARYA_DATA, ADD_KARYA, UPDATE_KARYA } from "../models/KaryaData.js";
 
 const queryListOfKarya = async () => {
   try {
@@ -20,4 +20,13 @@ const createKarya = async (getDataKaryaBody) => {
   }
 };
 
-export { queryListOfKarya, createKarya };
+const putKarya = async (getDataKaryaBody, id) => {
+  try {
+    const results = await UPDATE_KARYA(getDataKaryaBody, id);
+    return results;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export { queryListOfKarya, createKarya, putKarya };

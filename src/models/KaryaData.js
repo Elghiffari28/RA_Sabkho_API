@@ -35,4 +35,15 @@ const ADD_KARYA = (getDataKaryaBody) => {
   });
 };
 
-export { KARYA_DATA, ADD_KARYA };
+const UPDATE_KARYA = (getDataKaryaBody, id) => {
+  return new Promise((resolve, reject) => {
+    const sql = `UPDATE karya SET nama_anak = '${getDataKaryaBody.nama_anak}', deskripsi = '${getDataKaryaBody.deskripsi}', foto = '${getDataKaryaBody.foto}' WHERE id = ${id}`;
+    db.query(sql, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+};
+export { KARYA_DATA, ADD_KARYA, UPDATE_KARYA };

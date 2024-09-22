@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
 
   // Jika tidak ada token, kirimkan status 401 (Unauthorized)
   if (token == null)
-    return res.status(401).json({ message: "Token not found" });
+    return res.status(401).json({ message: "Token not found, Please Login" });
 
   // Verifikasi token menggunakan secret key
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {

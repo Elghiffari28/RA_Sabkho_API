@@ -27,3 +27,15 @@ export const ADD_NEWS = (newsBody) => {
     );
   });
 };
+
+export const DELETE_NEWS = (id) => {
+  return new Promise((resolve, reject) => {
+    const sql = `DELETE FROM news WHERE id = ${id}`;
+    db.query(sql, (err, results) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(results);
+    });
+  });
+};

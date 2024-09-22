@@ -58,7 +58,11 @@ const serviceUpdateGuru = async (getbodyGuruUpdate, id) => {
 const serviceDeleteGuru = async (id) => {
   try {
     const results = await DELETE_GURU(id);
-    return results;
+    if (!results.affectedRows) {
+      throw new Error("Data tidak ada");
+    } else {
+      return results;
+    }
   } catch (error) {
     throw error;
   }
