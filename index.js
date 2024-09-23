@@ -1,6 +1,8 @@
 import dotenv from "dotenv";
 dotenv.config();
-import express, { urlencoded } from "express";
+import express from "express";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 // dotenv.config();
 // import * as path from "path";
 import { routerAuth } from "./src/routes/AuthUser.js";
@@ -15,6 +17,8 @@ const port = process.env.PORT;
 // app settings
 app.use(express.json());
 app.use(express({ urlencoded: true }));
+app.use(cookieParser());
+app.use(cors());
 // app.set("view engine", "ejs");
 // app.set("views", path.resolve("./src/views"));
 
