@@ -1,4 +1,9 @@
-import { KARYA_DATA, ADD_KARYA, UPDATE_KARYA } from "../models/KaryaData.js";
+import {
+  KARYA_DATA,
+  ADD_KARYA,
+  UPDATE_KARYA,
+  DELETE_KARYA,
+} from "../models/KaryaData.js";
 
 const queryListOfKarya = async () => {
   try {
@@ -29,4 +34,17 @@ const putKarya = async (getDataKaryaBody, id) => {
   }
 };
 
-export { queryListOfKarya, createKarya, putKarya };
+const serviceDeleteKarya = async (id) => {
+  try {
+    const results = await DELETE_KARYA(id);
+    if (!results.affectedRows) {
+      throw new Error("Data tidak ada");
+    } else {
+      return results;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { queryListOfKarya, createKarya, putKarya, serviceDeleteKarya };

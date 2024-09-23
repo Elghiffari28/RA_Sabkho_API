@@ -40,10 +40,23 @@ const UPDATE_KARYA = (getDataKaryaBody, id) => {
     const sql = `UPDATE karya SET nama_anak = '${getDataKaryaBody.nama_anak}', deskripsi = '${getDataKaryaBody.deskripsi}', foto = '${getDataKaryaBody.foto}' WHERE id = ${id}`;
     db.query(sql, (err, results) => {
       if (err) {
+        return reject(new Error(err));
+      }
+      resolve(results);
+    });
+  });
+};
+
+const DELETE_KARYA = (id) => {
+  return new Promise((resolve, reject) => {
+    const sql = `DELETE FROM karya WHERE id = ${id}`;
+    db.query(sql, (err, results) => {
+      if (err) {
+        console.log(err);
         return reject(err);
       }
       resolve(results);
     });
   });
 };
-export { KARYA_DATA, ADD_KARYA, UPDATE_KARYA };
+export { KARYA_DATA, ADD_KARYA, UPDATE_KARYA, DELETE_KARYA };

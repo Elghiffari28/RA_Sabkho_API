@@ -1,5 +1,15 @@
-import { GETResponse, POSTResponse, PUTResponse } from "../../response.js";
-import { queryListOfKarya, createKarya, putKarya } from "../services/Karya.js";
+import {
+  DELETEResponse,
+  GETResponse,
+  POSTResponse,
+  PUTResponse,
+} from "../../response.js";
+import {
+  queryListOfKarya,
+  createKarya,
+  putKarya,
+  serviceDeleteKarya,
+} from "../services/Karya.js";
 
 const getAllKarya = async (req, res) => {
   try {
@@ -37,6 +47,15 @@ const updateKarya = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
-const deleteKarya = (req, res) => {};
+const deleteKarya = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const results = await serviceDeleteKarya(id);
+    console.log(id);
+    DELETEResponse(200, `Karya dengan id ${id} berhasil dihapus`, res);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 
-export { getAllKarya, addKarya, updateKarya };
+export { getAllKarya, addKarya, updateKarya, deleteKarya };
