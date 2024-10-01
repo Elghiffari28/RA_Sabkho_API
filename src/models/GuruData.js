@@ -60,6 +60,7 @@ const UPDATE_GURU = (getBodyGuruUpdate, id) => {
     const sql = `UPDATE guru SET nama_guru = '${getBodyGuruUpdate.nama_guru}', tempat_lahir = '${getBodyGuruUpdate.tempat_lahir}', tanggal_lahir = '${getBodyGuruUpdate.tanggal_lahir}', gender = '${getBodyGuruUpdate.gender}', agama = '${getBodyGuruUpdate.agama}', jabatan= '${getBodyGuruUpdate.jabatan}', nohp= '${getBodyGuruUpdate.nohp}', alamat = '${getBodyGuruUpdate.alamat}', foto = '${getBodyGuruUpdate.foto}' WHERE id = ${id}`;
     db.query(sql, (err, results) => {
       if (err) {
+        console.log(err);
         return reject(new Error(err));
       }
       resolve(results);

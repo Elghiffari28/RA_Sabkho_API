@@ -54,8 +54,9 @@ const updateGuru = async (req, res) => {
   try {
     const id = req.params.id;
     const getBodyGuruUpdate = req.body;
-    const results = await serviceUpdateGuru(getBodyGuruUpdate, id);
-    console.log(id);
+    const getFileName = req.file ? req.file.filename : null;
+    const results = await serviceUpdateGuru(getBodyGuruUpdate, id, getFileName);
+    console.log({ id, getBodyGuruUpdate, getFileName });
     PUTResponse(
       200,
       getBodyGuruUpdate,
@@ -72,7 +73,7 @@ const deleteGuru = async (req, res) => {
     const id = req.params.id;
     const results = await serviceDeleteGuru(id);
     console.log(results);
-    DELETEResponse(200, `Data id ${id} berhasil dihapus`, res);
+    DELETEResponse(200, `Data ${id} berhasil dihapus`, res);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

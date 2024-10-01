@@ -10,6 +10,22 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage });
+const fileFilter = (req, file, cb) => {
+  const allowedTypes = /jpeg|jpg|png/;
+  const extname = allowedTypes.test(
+    path.extname(file.originalname).toLocaleLowerCase()
+  );
+  if (extname) {
+    cb(null, true);
+  } else {
+    cb(new Error("Hanya bisa upload beresktensi gambar"));
+  }
+};
 
-export default upload;
+const upload = multer({
+  storage: storage,
+  fileFilter: fileFilter,
+  limits: { fileSize: 5000000 },
+});
+
+export { upload };

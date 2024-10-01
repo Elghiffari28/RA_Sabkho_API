@@ -21,7 +21,7 @@ const limiter = rateLimit({
 });
 
 // app settings
-app.use(express.json({ limit: "10kb" }));
+app.use(express.json());
 app.use(express({ urlencoded: true }));
 app.use(cookieParser());
 app.use(cors());
