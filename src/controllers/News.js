@@ -17,7 +17,8 @@ const getAllNews = async (req, res) => {
 const addNews = async (req, res) => {
   try {
     const newsBody = req.body;
-    const results = await serviceAddNews(newsBody);
+    const getFileName = req.file;
+    const results = await serviceAddNews(newsBody, getFileName);
     POSTResponse(201, newsBody, results, "Data berhasil ditambahkan", res);
   } catch (error) {
     res.status(400).json({ message: error.message });

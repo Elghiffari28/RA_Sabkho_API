@@ -24,7 +24,9 @@ const getAllKarya = async (req, res) => {
 const addKarya = async (req, res) => {
   try {
     const getDataKaryaBody = req.body;
-    const results = await createKarya(getDataKaryaBody);
+    const getFileName = req.file;
+    console.log(getFileName, getDataKaryaBody);
+    const results = await createKarya(getDataKaryaBody, getFileName);
     POSTResponse(
       201,
       getDataKaryaBody,
@@ -33,7 +35,7 @@ const addKarya = async (req, res) => {
       res
     );
   } catch (error) {
-    throw new Error(`Error adding karya ${error.message}`);
+    res.status(400).json({ message: error.message });
   }
 };
 

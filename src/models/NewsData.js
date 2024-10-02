@@ -12,12 +12,12 @@ export const NEWS_DATA = () => {
   });
 };
 
-export const ADD_NEWS = (newsBody) => {
+export const ADD_NEWS = (newsBody, getFileName) => {
   return new Promise((resolve, reject) => {
     const sql = "INSERT INTO news (judul, isi, img, tanggal) VALUES (?,?,?,?)";
     db.query(
       sql,
-      [newsBody.judul, newsBody.isi, newsBody.img, newsBody.tanggal],
+      [newsBody.judul, newsBody.isi, getFileName.filename, newsBody.tanggal],
       (err, results) => {
         if (err) {
           return reject(new Error(err));

@@ -8,12 +8,12 @@ import {
   updateGuru,
   deleteGuru,
 } from "../controllers/Guru.js";
-import { upload } from "../config/multer.js";
+import { uploadFotoGuru } from "../config/multer.js";
 
 routerGuru.get("/all", getAllGuru);
 routerGuru.get("/byid/:id", getGuruById);
-routerGuru.post("/add/", upload.single("foto"), addGuru);
-routerGuru.put("/put/:id", upload.single("foto"), updateGuru);
+routerGuru.post("/add/", uploadFotoGuru.single("foto"), addGuru);
+routerGuru.put("/put/:id", uploadFotoGuru.single("foto"), updateGuru);
 routerGuru.delete("/delete/:id", deleteGuru);
 
 export { routerGuru };

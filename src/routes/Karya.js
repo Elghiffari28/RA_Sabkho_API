@@ -5,10 +5,11 @@ import {
   getAllKarya,
   updateKarya,
 } from "../controllers/Karya.js";
+import { uploadFotoKarya } from "../config/multer.js";
 const routerKarya = express.Router();
 
 routerKarya.get("/all", getAllKarya);
-routerKarya.post("/", addKarya);
+routerKarya.post("/", uploadFotoKarya.single("foto"), addKarya);
 routerKarya.put("/:id", updateKarya);
 routerKarya.delete("/delete/:id", deleteKarya);
 

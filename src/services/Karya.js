@@ -14,11 +14,11 @@ const queryListOfKarya = async () => {
   }
 };
 
-const createKarya = async (getDataKaryaBody) => {
+const createKarya = async (getDataKaryaBody, getFileName) => {
   //lakykan validasi
 
   try {
-    const results = await ADD_KARYA(getDataKaryaBody);
+    const results = await ADD_KARYA(getDataKaryaBody, getFileName);
     return results;
   } catch (error) {
     throw new Error(error);

@@ -12,7 +12,7 @@ const KARYA_DATA = () => {
   });
 };
 
-const ADD_KARYA = (getDataKaryaBody) => {
+const ADD_KARYA = (getDataKaryaBody, getFileName) => {
   return new Promise((resolve, reject) => {
     const sql =
       "INSERT INTO karya (nama_anak, deskripsi, komentar, bintang, foto) VALUES (?,?,?,?,?)";
@@ -23,7 +23,7 @@ const ADD_KARYA = (getDataKaryaBody) => {
         getDataKaryaBody.deskripsi,
         getDataKaryaBody.komentar,
         getDataKaryaBody.bintang,
-        getDataKaryaBody.foto,
+        getFileName.filename,
       ],
       (err, results) => {
         if (err) {

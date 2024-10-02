@@ -11,9 +11,9 @@ const queryListOfNews = async () => {
   }
 };
 
-const serviceAddNews = async (newsBody) => {
+const serviceAddNews = async (newsBody, getFileName) => {
   try {
-    const results = await ADD_NEWS(newsBody);
+    const results = await ADD_NEWS(newsBody, getFileName);
     return results;
   } catch (error) {
     throw error;

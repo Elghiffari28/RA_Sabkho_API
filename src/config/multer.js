@@ -1,9 +1,27 @@
 import multer from "multer";
 import path from "path";
 
-const storage = multer.diskStorage({
+const storageFotoGuru = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public/assets/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+const storageFotoKarya = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/assets/karya/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+const storageFotoNews = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/assets/news/");
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname));
@@ -22,10 +40,18 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-const upload = multer({
-  storage: storage,
+const uploadFotoGuru = multer({
+  storage: storageFotoGuru,
   fileFilter: fileFilter,
   limits: { fileSize: 5000000 },
 });
+const uploadFotoKarya = multer({
+  storage: storageFotoKarya,
+  fileFilter: fileFilter,
+});
+const uploadFotoNews = multer({
+  storage: storageFotoNews,
+  fileFilter: fileFilter,
+});
 
-export { upload };
+export { uploadFotoGuru, uploadFotoKarya, uploadFotoNews };
