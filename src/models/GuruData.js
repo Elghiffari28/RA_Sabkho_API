@@ -58,6 +58,7 @@ const ADD_GURU = (getBodyGuruData, getFileName) => {
 const UPDATE_GURU = (getBodyGuruUpdate, id) => {
   return new Promise((resolve, reject) => {
     const sql = `UPDATE guru SET nama_guru = '${getBodyGuruUpdate.nama_guru}', tempat_lahir = '${getBodyGuruUpdate.tempat_lahir}', tanggal_lahir = '${getBodyGuruUpdate.tanggal_lahir}', gender = '${getBodyGuruUpdate.gender}', agama = '${getBodyGuruUpdate.agama}', jabatan= '${getBodyGuruUpdate.jabatan}', nohp= '${getBodyGuruUpdate.nohp}', alamat = '${getBodyGuruUpdate.alamat}', foto = '${getBodyGuruUpdate.foto}' WHERE id = ${id}`;
+    console.log(sql);
     db.query(sql, (err, results) => {
       if (err) {
         console.log(err);

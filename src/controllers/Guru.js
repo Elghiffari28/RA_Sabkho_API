@@ -16,6 +16,7 @@ import {
 const getAllGuru = async (req, res) => {
   try {
     const dataGuru = await QueryListOfGuru();
+    console.log(dataGuru);
     GETResponse(200, dataGuru, "Get all data guru", res);
   } catch (error) {
     console.log(error);

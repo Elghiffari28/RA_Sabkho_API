@@ -5,6 +5,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
+import path from "path";
+import { fileURLToPath } from "url";
 // dotenv.config();
 // import * as path from "path";
 import { routerAuth } from "./src/routes/AuthUser.js";
@@ -19,6 +21,8 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
 });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // app settings
 app.use(express.json());
@@ -27,6 +31,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use(limiter);
 app.use(helmet());
+app.use("/images", express.static(path.join(__dirname, "public/assets")));
 // app.set("view engine", "ejs");
 // app.set("views", path.resolve("./src/views"));
 

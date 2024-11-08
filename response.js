@@ -1,15 +1,13 @@
 const GETResponse = (statusCode, data, message, res) => {
-  res.status(statusCode).json([
-    {
-      payload: data,
-      message,
-      metadata: {
-        prev: "",
-        next: "",
-        current: "",
-      },
+  res.status(statusCode).json({
+    payload: data,
+    message,
+    metadata: {
+      prev: "",
+      next: "",
+      current: "",
     },
-  ]);
+  });
 };
 
 const POSTResponse = (statusCode, data, result, message, res) => {
