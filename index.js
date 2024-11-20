@@ -31,7 +31,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use(limiter);
 app.use(helmet());
-app.use("/images", express.static(path.join(__dirname, "public/assets")));
+app.use("/images", express.static(path.join(__dirname, "public/assets/")));
 // app.set("view engine", "ejs");
 // app.set("views", path.resolve("./src/views"));
 
