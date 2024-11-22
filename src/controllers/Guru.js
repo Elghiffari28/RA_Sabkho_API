@@ -16,7 +16,7 @@ import {
 const getAllGuru = async (req, res) => {
   try {
     const dataGuru = await QueryListOfGuru();
-    console.log(dataGuru);
+    // console.log(dataGuru);
     GETResponse(200, dataGuru, "Get all data guru", res);
   } catch (error) {
     console.log(error);
@@ -37,7 +37,7 @@ const addGuru = async (req, res) => {
   try {
     const getBodyGuruData = req.body;
     const getFileName = req.file;
-    console.log(getFileName);
+    // console.log(getFileName);
     const results = await createGuru(getBodyGuruData, getFileName);
     POSTResponse(
       201,
@@ -57,7 +57,7 @@ const updateGuru = async (req, res) => {
     const getBodyGuruUpdate = req.body;
     const getFileName = req.file ? req.file.filename : null;
     const results = await serviceUpdateGuru(getBodyGuruUpdate, id, getFileName);
-    console.log({ id, getBodyGuruUpdate, getFileName });
+    // console.log({ id, getBodyGuruUpdate, getFileName });
     PUTResponse(
       200,
       getBodyGuruUpdate,
@@ -73,7 +73,7 @@ const deleteGuru = async (req, res) => {
   try {
     const id = req.params.id;
     const results = await serviceDeleteGuru(id);
-    console.log(results);
+    // console.log(results);
     DELETEResponse(200, `Data ${id} berhasil dihapus`, res);
   } catch (error) {
     res.status(400).json({ message: error.message });

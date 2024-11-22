@@ -43,7 +43,7 @@ const createGuru = async (getBodyGuruData, getFileName) => {
     if (lenNig !== 10) {
       throw new Error("Panjang NIG kurang dari 10 atau lebih dari 10");
     }
-    console.log(lenNig);
+    // console.log(lenNig);
     const results = await ADD_GURU(getBodyGuruData, getFileName);
     return results;
   } catch (error) {
